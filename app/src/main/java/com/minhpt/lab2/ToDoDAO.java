@@ -52,6 +52,17 @@ public class ToDoDAO {
         return row != -1;
     }
 
+    public boolean updateToDo(ToDo toDo) {
+        database = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("title", toDo.getTitle());
+        values.put("content", toDo.getContent());
+        values.put("date", toDo.getDate());
+        values.put("type", toDo.getType());
+        int check = database.update("ToDO", values, "id=?", new String[]{String.valueOf(toDo.getId())});
+        return check != -1;
+    }
+
     public ArrayList<ToDo> getListToDo() {
         ArrayList<ToDo> list = new ArrayList<>();
         database = dbHelper.getWritableDatabase();

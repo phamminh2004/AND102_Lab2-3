@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,13 +54,25 @@ public class MainActivity extends AppCompatActivity {
                 toDo.setContent(edt_content.getText().toString());
                 toDo.setDate(edt_date.getText().toString());
                 toDo.setType(edt_type.getText().toString());
-                toDo.setStatus(0);
+                toDo.setStatus(toDo.getStatus());
 
                 toDoDAO.addToDo(toDo);
                 list.clear();
                 list = toDoDAO.getListToDo();
                 toDoAdapter = new ToDoAdapter(context, list);
                 rv_list.setAdapter(toDoAdapter);
+            }
+        });
+        edt_type.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] mucDoCV = {"Dễ", "Bình thường", "Khó"};
+                new AlertDialog.Builder(context).setTitle("Chọn mức độ công việc").setItems(mucDoCV, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        edt_type.setText(mucDoCV[which]);
+                    }
+                }).show();
             }
         });
     }

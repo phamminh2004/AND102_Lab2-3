@@ -1,22 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp"
-    tools:context=".MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:text="TODOLIST"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
+    android:padding="15dp">
+    
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,7 +14,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/edt_title"
+        android:id="@+id/edtTitle"
         android:layout_width="match_parent"
         android:layout_height="40dp" />
 
@@ -39,7 +27,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/edt_content"
+        android:id="@+id/edtContent"
         android:layout_width="match_parent"
         android:layout_height="40dp" />
 
@@ -52,7 +40,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/edt_date"
+        android:id="@+id/edtDate"
         android:layout_width="match_parent"
         android:layout_height="40dp" />
 
@@ -65,7 +53,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/edt_type"
+        android:id="@+id/edtType"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:clickable="false"
@@ -73,19 +61,30 @@
         android:focusable="false"
         android:inputType="none" />
 
-    <Button
-        android:id="@+id/btn_add"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginVertical="15dp"
-        android:background="@drawable/add"
-        android:text="ADD"
-        app:backgroundTint="@null" />
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btnUpdate"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#C87C0D"
+            android:text="Update" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#BC0C0C"
+            android:text="CANCEL" />
+    </LinearLayout>
 
 </LinearLayout>

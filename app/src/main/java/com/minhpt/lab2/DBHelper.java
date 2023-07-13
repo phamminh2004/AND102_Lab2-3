@@ -21,9 +21,9 @@ public class DBHelper extends SQLiteOpenHelper {
                 "  )";
         db.execSQL(sql);
         String data = "INSERT INTO ToDo VALUES\n" +
-                "(1,'Học C++','Học C++ nâng cao','29/03/2023','Khó',0),\n" +
-                "(2,'Học Java','Học Java cơ bản','19/04/2023','Dễ',1),\n" +
-                "(3,'Học React Native','Học React Native cơ bản','19/04/2023','Dễ',1)";
+                "(1,'Học C++','Học C++ nâng cao','29/3/2023','Khó',0),\n" +
+                "(2,'Học Java','Học Java cơ bản','15/4/2023','Dễ',0),\n" +
+                "(3,'Học React Native','Học React Native cơ bản','08/6/2023','Dễ',1)";
         db.execSQL(data);
     }
 
