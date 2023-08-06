@@ -57,8 +57,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ViewHolder> {
                 builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
-                        int id = list.get(holder.getAdapterPosition()).getId();
+                        String id = list.get(holder.getAdapterPosition()).getId();
                         boolean check = toDoDAO.deleteToDo(id);
                         if (check) {
                             Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
@@ -80,7 +79,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ViewHolder> {
         holder.cb_status.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                int id = list.get(holder.getAdapterPosition()).getId();
+                String id = list.get(holder.getAdapterPosition()).getId();
                 boolean check = toDoDAO.updateStatus(id, holder.cb_status.isChecked());
                 if (check) {
                     Toast.makeText(context, "Update status thành công", Toast.LENGTH_SHORT).show();
@@ -106,6 +105,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ViewHolder> {
         View view = LayoutInflater.from(context).inflate(R.layout.update, null);
         builder.setView(view);
         AlertDialog dialog = builder.create();
+        EditText edtId = view.findViewById(R.id.edtId);
         EditText edtTitle = view.findViewById(R.id.edtTitle);
         EditText edtContent = view.findViewById(R.id.edtContent);
         EditText edtDate = view.findViewById(R.id.edtDate);
@@ -131,11 +131,12 @@ public class ToDoAdapter extends RecyclerView.Adapter<ViewHolder> {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String id = edtId.getText().toString();
                 String title = edtTitle.getText().toString();
                 String content = edtContent.getText().toString();
                 String date = edtDate.getText().toString();
                 String type = edtType.getText().toString();
-                ToDo toDo1 = new ToDo(toDo.getId(), title, content, date, type, toDo.getStatus());
+                ToDo toDo1 = new ToDo(id, title, content, date, type, toDo.getStatus());
                 boolean check = toDoDAO.updateToDo(toDo1);
                 if (check) {
                     list.clear();
